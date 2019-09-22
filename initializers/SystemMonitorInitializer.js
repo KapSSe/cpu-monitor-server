@@ -6,9 +6,9 @@ module.exports = class SystemMonitorIntializer extends Initializer {
   constructor () {
     super()
     this.name = 'SystemMonitor'
-    this.loadPriority = 500
-    this.startPriority = 500
-    this.stopPriority = 500
+    this.loadPriority = 1000
+    this.startPriority = 1000
+    this.stopPriority = 1000
   }
 
   async initialize () {
@@ -17,13 +17,21 @@ module.exports = class SystemMonitorIntializer extends Initializer {
     api.systemMonitor.getCpuUsage = async () => {
       try {
         return await cpu.usage()
-      } catch (e) {
-        api.log('system monitor cpu error', 'emerg', e)
+      } catch (err) {
+        throw new Error(err)
+      }
+    }
+
+    api.systemMonitor.save = async () => {
+      try {
+        const monitorModel = api.mdb.getModel('Monitor')
+        const cpu = await api.systemMonitor.getCpuUsage()
+
+        const user = api.mdb.createDocument(monitorModel, { cpu })
+        await api.mdb.saveDocument(user)
+      } catch (err) {
+        throw new Error(err)
       }
     }
   }
-
-  async start () {}
-
-  async stop () {}
 }

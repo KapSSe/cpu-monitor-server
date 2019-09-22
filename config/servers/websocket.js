@@ -38,11 +38,11 @@ exports.default = {
         client: {
           apiPath: '/api', // the api base endpoint on your actionhero server
           // the cookie name we should use for shared authentication between WS and web connections
-          cookieKey: api.config.servers.web.fingerprintOptions.cookieKey
+          cookieKey: api.config.servers.web.fingerprintOptions.cookieKey,
           // reconnect:        {},
           // timeout:          10000,
-          // ping:             25000,
-          // pong:             10000,
+          ping: 1000,
+          pong: 1000
           // strategy:         "online",
           // manual:           false,
           // websockets:       true,

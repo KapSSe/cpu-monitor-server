@@ -7,9 +7,13 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
+    "@hapi/joi": "^16.1.4",
     "actionhero": "19.2.2",
+    "await-to-js": "^2.1.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.1.0",
     "ioredis": "latest",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.1",
     "node-os-utils": "^1.0.7",
     "winston": "latest",
