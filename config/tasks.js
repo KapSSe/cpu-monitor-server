@@ -29,7 +29,7 @@ exports.default = {
         transferred_job: 'debug'
       },
       // how long to sleep between jobs / scheduler checks
-      timeout: 500,
+      timeout: 0,
       // at minimum, how many parallel taskProcessors should this node spawn?
       // (have number > 0 to enable, and < 1 to disable)
       minTaskProcessors: 1,
