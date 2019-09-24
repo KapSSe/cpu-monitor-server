@@ -4,7 +4,7 @@ exports.default = {
       // Should this node run a scheduler to promote delayed tasks?
       scheduler: true,
       // what queues should the taskProcessors work?
-      queues: ['monitor'],
+      queues: ['cpu'],
       // Logging levels of task workers
       workerLogging: {
         failure: 'error', // task failure
@@ -29,7 +29,7 @@ exports.default = {
         transferred_job: 'debug'
       },
       // how long to sleep between jobs / scheduler checks
-      timeout: 0,
+      timeout: 500,
       // at minimum, how many parallel taskProcessors should this node spawn?
       // (have number > 0 to enable, and < 1 to disable)
       minTaskProcessors: 1,

@@ -53,7 +53,7 @@ module.exports = class DatabaseInitializer extends Initializer {
 
     api.mdb.aggregate = async (Model, pipeline) => {
       try {
-        const res = await api.mdb._models[Model].find({ cpu: 14.84 })
+        const res = await api.mdb._models[Model].aggregate(pipeline).then(res => res)
         return res
       } catch (err) {
         throw new Error(err)
