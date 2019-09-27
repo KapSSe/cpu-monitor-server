@@ -17,7 +17,7 @@ exports.default = {
         // set to `undefined` to not render the client-side JS on boot
         clientJsName: 'socketClient',
         // should the server signal clients to not reconnect when the server is shutdown/reboot
-        destroyClientsOnShutdown: false,
+        destroyClientsOnShutdown: true,
 
         // websocket Server Options:
         server: {
@@ -27,8 +27,8 @@ exports.default = {
           // transformer:   'websockets',
           // plugin:        {},
           // timeout:       35000,
-          // origins:       '*',
-          // methods:       ['GET','HEAD','PUT','POST','DELETE','OPTIONS'],
+          // origins: '*'
+          // methods: ['GET', 'HEAD', 'PUT', 'POST', 'DELETE', 'OPTIONS']
           // credentials:   true,
           // maxAge:        '30 days',
           // exposed:       false,
@@ -36,7 +36,7 @@ exports.default = {
 
         // websocket Client Options:
         client: {
-          apiPath: '/api', // the api base endpoint on your actionhero server
+          apiPath: '/s', // the api base endpoint on your actionhero server
           // the cookie name we should use for shared authentication between WS and web connections
           cookieKey: api.config.servers.web.fingerprintOptions.cookieKey,
           // reconnect:        {},

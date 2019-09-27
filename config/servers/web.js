@@ -15,7 +15,7 @@ exports.default = {
         // i.e.: [ 'https://www.site.com' ]
         allowedRequestHosts: process.env.ALLOWED_HOSTS ? process.env.ALLOWED_HOSTS.split(',') : [],
         // Port or Socket Path
-        port: process.env.PORT || 8080,
+        port: process.env.PORT || 8090,
         // Which IP to listen on (use '0.0.0.0' for all; '::' for all on ipv4 and ipv6)
         // Set to `null` when listening to socket
         bindIP: '0.0.0.0',
@@ -36,7 +36,7 @@ exports.default = {
         urlPathForFiles: 'public',
         // When visiting the root URL, should visitors see 'api' or 'file'?
         //  Visitors can always visit /api and /public as normal
-        rootEndpointType: 'file',
+        rootEndpointType: 'api',
         // simple routing also adds an 'all' route which matches /api/:action for all actions
         simpleRouting: true,
         // queryRouting allows an action to be defined via a URL param, ie: /api?action=:action
@@ -48,7 +48,7 @@ exports.default = {
         // or continue to use the cached file if it's still valid
         enableEtag: true,
         // should we save the un-parsed HTTP POST/PUT payload to connection.rawConnection.params.rawBody?
-        saveRawBody: false,
+        saveRawBody: true,
         // How many times should we try to boot the server?
         // This might happen if the port is in use by another process or the socketfile is claimed
         bootAttempts: 1,
@@ -75,8 +75,8 @@ exports.default = {
         padding: 2,
         // Options to configure metadata in responses
         metadataOptions: {
-          serverInformation: true,
-          requesterInformation: true
+          serverInformation: false,
+          requesterInformation: false
         },
         // When true, returnErrorCodes will modify the response header for http(s) clients if connection.error is not null.
         // You can also set connection.rawConnection.responseHttpCode to specify a code per request.
@@ -114,8 +114,8 @@ exports.test = {
         port: 18080 + parseInt(process.env.JEST_WORKER_ID || 0),
         matchExtensionMime: true,
         metadataOptions: {
-          serverInformation: true,
-          requesterInformation: true
+          serverInformation: false,
+          requesterInformation: false
         }
       }
     }

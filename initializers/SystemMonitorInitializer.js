@@ -14,13 +14,7 @@ module.exports = class SystemMonitorIntializer extends Initializer {
   async initialize () {
     api.systemMonitor = {}
 
-    api.systemMonitor.getCpuUsage = async () => {
-      try {
-        return await cpu.usage()
-      } catch (err) {
-        throw new Error(err)
-      }
-    }
+    api.systemMonitor.getCpuUsage = () => cpu.usage()
 
     api.systemMonitor.getTimeRange = (type, depth) => {
       const date = new Date()
@@ -69,8 +63,6 @@ module.exports = class SystemMonitorIntializer extends Initializer {
       if (!params || !params.type || !params.depth) {
         throw new Error('missing stats params')
       }
-
-      console.log('stats', 'got params', params)
 
       const range = api.systemMonitor.getTimeRange(params.type, params.depth)
 

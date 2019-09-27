@@ -3722,7 +3722,7 @@ if (typeof Primus === 'undefined') {
 }
 
 ActionheroWebsocketClient.prototype.defaults = function () {
-  return { apiPath: '/api',
+  return { apiPath: '/s',
   cookieKey: 'sessionID',
   ping: 1000,
   pong: 1000,

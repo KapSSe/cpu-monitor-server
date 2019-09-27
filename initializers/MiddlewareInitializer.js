@@ -8,8 +8,8 @@ module.exports = class MiddlewareInitializer extends Initializer {
   constructor () {
     super()
     this.name = 'MiddlewareInitializer'
-    this.loadPriority = 1000
-    this.startPriority = 1000
+    this.loadPriority = 800
+    this.startPriority = 800
     this.stopPriority = 1000
   }
 
@@ -45,12 +45,12 @@ module.exports = class MiddlewareInitializer extends Initializer {
             const user = api.mdb.createDocument(userModel, userData)
             const res = await api.mdb.saveDocument(user)
 
-            if (res) data.response.result = { body: 'OK' }
+            if (res) data.response = { status: 'OK' }
           } else {
-            data.response.result = { error: 'Registration', body: 'User already exists' }
+            data.response = { error: 'Registration', body: 'User already exists' }
           }
         } catch (err) {
-          data.response.result = { error: err.name, body: err.message }
+          data.response = { error: err.name, body: err.message }
         }
       }
     }
@@ -71,13 +71,13 @@ module.exports = class MiddlewareInitializer extends Initializer {
 
           if (user && hasValidPassword) {
             const token = jwt.sign({ _id: user.id }, process.env.JWT_TOKEN_SECRET, { expiresIn: 1300000 })
-            data.connection.setHeader('auth-token', token)
-            data.response.result = { body: 'logged in' }
+            // data.connection.setHeader('auth-token', token)
+            data.response = { status: 'OK', token }
           } else {
-            data.response.result = { error: 'Login', body: 'Email or password is wrong' }
+            data.response = { error: 'Login', body: 'Email or password is wrong' }
           }
         } catch (err) {
-          data.response.result = { error: err.name, body: err.message }
+          data.response = { error: 'Login', body: 'Email or password is wrong' }
         }
       }
     }
