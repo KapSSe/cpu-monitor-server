@@ -15,7 +15,7 @@
     "ioredis": "latest",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.1",
-    "node-os-utils": "^1.0.7",
+    "node-os-utils": "^1.1.0",
     "winston": "latest",
     "ws": "latest"
   },
